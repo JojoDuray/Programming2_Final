@@ -3,7 +3,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
-import sklearn
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 
 
 st.title("Are you a LinkedIn user?")
@@ -69,7 +70,6 @@ education = st.selectbox("Education level",
    index=None,
    placeholder="Select education level...",
 )
-#st.write(f"Education (pre-conversion): {education}")
 
 if education == "Less than high school":
     education = 1
@@ -88,7 +88,7 @@ elif education == "Some postgraduate":
 else:
     education = 8
     
-#st.write(f"Education (post-conversion): {education}")
+
 
 
 #income: drop down menu 
@@ -106,8 +106,6 @@ income = st.selectbox(
    placeholder="Income level...",
 )
 
-#st.write(f"Income (pre-conversion): {income}")
-
 if income == "Less than $10,000":
     income = 1
 elif income == "10 to under $20,000":
@@ -124,7 +122,6 @@ elif income == "75 to under $100,000":
     income = 7
 else:
     income= 8
-#st.write(f"Income (post-conversion): {income}")
 
 
 #female: drop down menu
@@ -135,7 +132,6 @@ female = st.selectbox(
    placeholder="Gender...",
 )
 
-#st.write('You selected:', female)
 
 if female == female:
     female = 1
@@ -147,7 +143,7 @@ married = st.selectbox(
    "Marital status",
    ("Married", "Single"),
    index=None,
-   placeholder="Select contact method...",
+   placeholder="Marital status?...",
 )
 if married == "Married":
     married = 1
@@ -158,14 +154,14 @@ parent = st.selectbox(
    "Parent",
    ("Yes", "No"),
    index=None,
-   placeholder="Select contact method...",
+   placeholder="Parental status?...",
 )
 
 if parent == "Yes":
     parent = 1
 else:
     parent = 0
-#st.write('You selected:', married)
+
 
 user_inputs = pd.DataFrame({
 "income": [income],
@@ -189,6 +185,7 @@ else:
 Probability_user= lr.predict_proba(user_inputs)
 rounded_probability = np.round(Probability_user, 2)
 predicted_class = max(rounded_probability[0])
+
 #Print the outputs
 st.write(f"You are {linkedin_user}")
 st.write(f"The probability of being a linkedin user is {predicted_class}")
