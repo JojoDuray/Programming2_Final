@@ -54,8 +54,7 @@ y_pred = lr.predict(X_test)
 
 # user_inputs = pd.DataFrame({})
 #age: use a slider for age 
-age = st.slider('How old are you?', 0, 98, 25)
-# st.write("I'm ", {age}, 'years old')
+age = st.slider('Age', 0, 100, 30)
 
 #education: drop down menu 
 education = st.selectbox("Education level",
@@ -88,12 +87,9 @@ elif education == "Some postgraduate":
 else:
     education = 8
     
-
-
-
 #income: drop down menu 
 income = st.selectbox(
-   "Household income?", 
+   "Household income", 
    ("Less than $10,000", 
     "10 to under $20,000", 
     "20 to under $30,000",
@@ -103,7 +99,7 @@ income = st.selectbox(
     "75 to under $100,000",
     "8: 100 to under $150,000"),
    index=None,
-   placeholder="Income level...",
+   placeholder="Select income level...",
 )
 
 if income == "Less than $10,000":
@@ -126,12 +122,11 @@ else:
 
 #female: drop down menu
 female = st.selectbox(
-   "Gender?",
+   "Gender",
    ("Female", "Male"),
    index=None,
-   placeholder="Gender...",
+   placeholder="Select gender...",
 )
-
 
 if female == female:
     female = 1
@@ -143,18 +138,19 @@ married = st.selectbox(
    "Marital status",
    ("Married", "Single"),
    index=None,
-   placeholder="Marital status?...",
+   placeholder="Select marital status...",
 )
 if married == "Married":
     married = 1
 else:
     married = 0
 
+#Parental status 
 parent = st.selectbox(
-   "Parent",
+   "Parental status",
    ("Yes", "No"),
    index=None,
-   placeholder="Parental status?...",
+   placeholder="Select parental status...",
 )
 
 if parent == "Yes":
