@@ -65,7 +65,7 @@ education = st.selectbox("Education level",
      "Two-year associate degree",
      "Four-year college",
      "Some postgraduate",
-     "8: Postgraduate"),
+     "Postgraduate"),
    index=None,
    placeholder="Select education level...",
 )
@@ -97,7 +97,7 @@ income = st.selectbox(
     "40 to under $50,000",
     "50 to under $75,000",
     "75 to under $100,000",
-    "8: 100 to under $150,000"),
+    "100 to under $150,000"),
    index=None,
    placeholder="Select income level...",
 )
